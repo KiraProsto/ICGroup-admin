@@ -1,21 +1,35 @@
-import { useState } from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState } from '@/app/store'
 import './login.css'
+import {
+    setLogin, setPassword, toggleShowPassword,setError, clearLogin
+} from '@/features/auth/authSlice'
+import { useLoginMutation } from "@/features/auth/authApi"
 
 export default function LoginForm(){
-    const [login, setLogin] = useState("")
-    const [password, setPassword] = useState("")
-    const [showPassword, setShowPassword] = useState(false)
-    const [error, setError] = useState(false)
+    const dispatch = useDispatch()
+    const login = useSelector((state: RootState) => state.auth.login)
+    const password = useSelector((state: RootState) => state.auth.password)
+    const showPassword = useSelector((state: RootState) => state.auth.showPassword)
+    const error = useSelector((state: RootState) => state.auth.error)
+    const [loginRequest] = useLoginMutation()
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     
         if (!login.trim() || !password.trim()){
-            setError(true)
+            dispatch(setError(true))
             return
         }
     
-        setError(false)
+        dispatch(setError(false))
+
+        try{
+            await loginRequest({ login, password }).unwrap()
+            console.log("Успешный вход")
+        } catch {
+            dispatch(setError(true))
+        }
     }
 
     return (
@@ -36,7 +50,7 @@ export default function LoginForm(){
                     className={`login ${login ? "input-has-value" : ""} ${error ? "input-error" : ""}`}
                     placeholder="Логин" 
                     value={login}
-                    onChange={(e) => setLogin(e.target.value)}
+                    onChange={(e) => dispatch(setLogin(e.target.value))}
                 />
 
                 {login && (
@@ -44,7 +58,7 @@ export default function LoginForm(){
                         type="button" 
                         className="close-btn" 
                         aria-label="Очитить поле логин"
-                        onClick={() => setLogin("")}
+                        onClick={() => dispatch(clearLogin())}
                     >
                         <img 
                             src = "/Close.svg" 
@@ -68,12 +82,12 @@ export default function LoginForm(){
                     className = {`password ${password ? "input-has-value" : ""} ${error ? "input-error" : ""}`}
                     placeholder="Введите пароль"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => dispatch(setPassword(e.target.value))}
                 />
                 <button 
                     type="button" 
                     aria-label="Показать пароль"
-                    onClick={() => setShowPassword((prev) => !prev)}
+                    onClick={() => dispatch(toggleShowPassword())}
                 >
                     <img 
                         src = "/Stroke.svg" 
