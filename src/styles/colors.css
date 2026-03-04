@@ -1,0 +1,26 @@
+:root {
+  --main-0: #e0fff6;
+  --main-1: #a8ffe4;
+  --main-2: #1de9b6;
+  --main-9: #0f8c6a;
+
+  --black-0: #c9c9c9;
+  --black-1: #b8b8b8;
+  --black-2: #212121;
+  --black-9: #000000;
+
+  --gray-0: #f8f9fa;
+  --gray-1: #dee2e6;
+  --gray-2: #7d7d7d;
+  --gray-9: #343a40;
+
+  --blue-0: #edf2ff;
+  --blue-1: #bac8ff;
+  --blue-2: #6d66ff;
+  --blue-9: #3a35b3;
+
+  --white-0: #fff;
+  --red-0: #ed584e;
+
+  --font-main: 'Montserrat', sans-serif;
+}

@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+body {
+  background-color: var(--gray-0);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body__logo {
+  padding-top: 60px;
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+}
+
+.body__frame {
+  background-color: var(--white-0);
+  margin-top: 80px;
+  width: 440px;
+  height: auto;
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  color: var(--black-9);
+  font-size: 32px;
+}
+
+.filed__login {
+  position: relative;
+  width: 375px;
+  height: 56px;
+  margin-top: 24px;
+}
+
+.login {
+  padding: 24px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--gray-0);
+  border-radius: 12px;
+  color: var(--black-2);
+}
+
+.login__label {
+  position: absolute;
+  font-size: 12px;
+  color: var(--black-1);
+  padding: 10px 24px;
+  opacity: 0;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.close__img {
+  width: 24px;
+  height: 24px;
+  padding: 6.5px;
+  opacity: 0;
+}
+
+.close-visible {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.login:focus {
+  outline: none;
+  border: 2px solid var(--main-2);
+}
+
+.filed__login .close-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.filed__password {
+  margin-top: 8px;
+  width: 375px;
+  height: 56px;
+  background-color: var(--gray-0);
+  border-radius: 12px;
+  position: relative;
+}
+
+.password {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 13px 24px;
+  border-radius: 12px;
+  padding-right: 60px;
+  color: var(--black-9);
+  background: none;
+}
+
+.password__label {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--black-1);
+  padding: 13px 24px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.label-visible {
+  opacity: 1;
+}
+
+input::placeholder {
+  color: var(--black-1);
+  font-size: 14px;
+}
+
+.input-has-value {
+  padding-top: 29px;
+}
+
+.password:focus {
+  outline: none;
+  border: 2px solid var(--main-2);
+}
+
+.filed__password button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.stroke__img {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  width: 375px;
+  height: 48px;
+  background-color: var(--gray-0);
+  border-radius: 12px;
+  color: var(--black-1);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.button-active {
+  background-color: var(--main-2);
+  color: var(--black-9);
+}
+
+.error {
+  font-size: 12px;
+  color: var(--red-0);
+  margin-top: 8px;
+}
+
+.input-error {
+  border: 2px solid var(--red-0);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--gray-0) inset !important;
+  box-shadow: 0 0 0 1000px var(--gray-0) inset !important;
+  -webkit-text-fill-color: var(--black-2) !important;
+  border-radius: 12px;
+}
