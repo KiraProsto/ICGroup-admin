@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '@/app/store'
-import './login.css'
+import '../../pages/login/login.css'
 import {
     setLogin, setPassword, toggleShowPassword,setError, clearLogin
 } from '@/features/auth/authSlice'
