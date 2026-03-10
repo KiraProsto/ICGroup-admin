@@ -1,3 +1,4 @@
+/* NewsHeader */
 .news-header {
   display: flex;
   gap: 85px;
@@ -28,4 +29,14 @@
     width: 25px;
     height: 25px;
   }
+}
+
+/* NewsCounters */
+.news-counters {
+  display: flex;
+  gap: 16px;
+  padding: 24px 30px;
+
+  font-weight: 400;
+  font-size: 14px;
 }
