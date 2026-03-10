@@ -34,6 +34,7 @@ export default function NewsTable({
                 className="news-table__checkbox"
                 data-testid="news-checkbox-all"
                 checked={allSelected}
+                aria-label="Выбрать все новости"
                 onChange={() => onSelectAll(allIds)}
               />
             </Table.Th>
@@ -64,6 +65,7 @@ export default function NewsTable({
                 <Table.Td className="news-table__cell-td">
                   <input
                     type="checkbox"
+                    aria-label={`Выбрать новость ${item.title}`}
                     className="news-table__checkbox"
                     data-testid="news-checkbox"
                     checked={isSelected}
