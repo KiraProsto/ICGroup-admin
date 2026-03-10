@@ -1,0 +1,10 @@
+.admin__layout {
+  display: flex;
+  height: 100vh;
+  font-family: var(--font-main);
+}
+
+.admin__content {
+  flex: 1;
+  padding: 40px 14px 60px;
+}

@@ -35,7 +35,9 @@ describe('LoginForm', () => {
     const input = screen.getByPlaceholderText(/Логин/i);
     fireEvent.change(input, { target: { value: 'test' } });
 
-    const clearBtn = screen.getByRole('button', { name: /Очитить поле логин/i });
+    const clearBtn = screen.getByRole('button', {
+      name: /Очитить поле логин/i,
+    });
     fireEvent.click(clearBtn);
 
     expect(input).toHaveValue('');
@@ -54,11 +56,17 @@ describe('LoginForm', () => {
 
   it('не показывает ошибку при валидных данных', () => {
     render(<LoginForm />);
-    fireEvent.change(screen.getByPlaceholderText(/Логин/i), { target: { value: 'admin' } });
-    fireEvent.change(screen.getByPlaceholderText(/Введите пароль/i), { target: { value: '123' } });
+    fireEvent.change(screen.getByPlaceholderText(/Логин/i), {
+      target: { value: 'admin' },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Введите пароль/i), {
+      target: { value: '123' },
+    });
 
     fireEvent.click(screen.getByRole('button', { name: /Войти/i }));
 
-    expect(screen.queryByText(/Неверный логин или пароль/i)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/Неверный логин или пароль/i),
+    ).not.toBeInTheDocument();
   });
 });
