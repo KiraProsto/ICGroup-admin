@@ -14,22 +14,24 @@ interface INewsItem {
 
 interface INewsTableProps {
   items: INewsItem[];
+  allIds: number[];
   selectedIds: number[];
   setSelectedIds: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export default function NewsTable({
   items,
+  allIds,
   selectedIds,
   setSelectedIds,
 }: INewsTableProps) {
-  const allSelected = selectedIds.length === items.length;
+  const allSelected = selectedIds.length === allIds.length;
 
   const toggleSelectAll = () => {
     if (allSelected) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(items.map((i) => i.id));
+      setSelectedIds(allIds);
     }
   };
 

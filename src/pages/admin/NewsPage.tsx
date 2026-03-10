@@ -15,6 +15,7 @@ export default function NewsPage() {
   const pageItems = mockNews.slice((page - 1) * perPage, page * perPage);
   const allPages = Math.ceil(all / perPage);
 
+  const allIds = mockNews.map((n) => n.id);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   return (
@@ -23,6 +24,7 @@ export default function NewsPage() {
       <NewsCounters all={all} published={published} drafts={drafts} />
       <NewsTable
         items={pageItems}
+        allIds={allIds}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
       />
