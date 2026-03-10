@@ -27,6 +27,7 @@ export default function NewsPage() {
         allIds={allIds}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
+        perPage={perPage}
       />
       <NewsPagination page={page} setPage={setPage} allPages={allPages} />
     </div>

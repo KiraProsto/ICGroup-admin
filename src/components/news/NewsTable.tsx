@@ -17,6 +17,7 @@ interface INewsTableProps {
   allIds: number[];
   selectedIds: number[];
   setSelectedIds: React.Dispatch<React.SetStateAction<number[]>>;
+  perPage: number;
 }
 
 export default function NewsTable({
@@ -24,6 +25,7 @@ export default function NewsTable({
   allIds,
   selectedIds,
   setSelectedIds,
+  perPage,
 }: INewsTableProps) {
   const allSelected = selectedIds.length === allIds.length;
 
@@ -40,6 +42,8 @@ export default function NewsTable({
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
+
+  const emptyRows = Array.from({ length: perPage - items.length });
 
   return (
     <div className="news-table__wrapper">
@@ -107,6 +111,11 @@ export default function NewsTable({
               </Table.Tr>
             );
           })}
+          {emptyRows.map((_, i) => (
+            <Table.Tr key={`empty-${i}`} className="news-table__empty-row">
+              <Table.Td className="news-table__cell-td" colSpan={8}></Table.Td>
+            </Table.Tr>
+          ))}
         </Table.Tbody>
       </Table>
     </div>

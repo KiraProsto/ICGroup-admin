@@ -85,6 +85,12 @@
   word-break: break-all;
 }
 
+.news-table__empty-row td {
+  height: 65px;
+  border-bottom: none;
+  padding: 24px 15px;
+}
+
 /* NewsPaginations */
 .news-pagination {
   margin: -3px 14px;
