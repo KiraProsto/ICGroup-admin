@@ -1,7 +1,8 @@
 .admin__layout {
   display: flex;
-  height: 100vh;
+  height: 100%;
   font-family: var(--font-main);
+  max-width: 2350px;
 }
 
 .admin__content {
