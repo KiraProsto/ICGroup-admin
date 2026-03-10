@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { NewsState } from './newsTypes';
+import type { NewsFilters, NewsState } from './newsTypes';
+import { mockNews } from '@/components/news/NewsMockData';
 
 const initialState: NewsState = {
   filters: {
@@ -9,6 +10,7 @@ const initialState: NewsState = {
     date: '',
     search: '',
   },
+  items: mockNews,
   page: 1,
   perPage: 10,
   selectedIds: [],
@@ -43,10 +45,31 @@ export const newsSlice = createSlice({
         state.selectedIds = allIds;
       }
     },
+
+    setFilter(
+      state,
+      action: PayloadAction<{ key: keyof NewsFilters; value: string }>,
+    ) {
+      state.filters[action.payload.key] = action.payload.value;
+    },
+
+    deleteSelected(state) {
+      state.items = state.items.filter(
+        (item) => !state.selectedIds.includes(item.id),
+      );
+      state.selectedIds = [];
+      state.filters.action = '';
+    },
   },
 });
 
-export const { setPage, setSelectedIds, toggleSelectOne, toggleSelectAll } =
-  newsSlice.actions;
+export const {
+  setPage,
+  setSelectedIds,
+  toggleSelectOne,
+  toggleSelectAll,
+  setFilter,
+  deleteSelected,
+} = newsSlice.actions;
 
 export default newsSlice.reducer;

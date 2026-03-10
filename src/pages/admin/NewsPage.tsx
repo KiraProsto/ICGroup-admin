@@ -1,5 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@//app/hooks';
-import type { RootState } from '@/app/store';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
 
 import NewsCounters from '@/components/news/NewsCounters';
 import NewsHeader from '@/components/news/NewsHeader';
@@ -13,6 +12,7 @@ import {
   selectSelectedIds,
   selectPageItems,
   selectTotalPages,
+  selectFilteredNews,
 } from '@/features/news/newsSelectors';
 
 import {
@@ -20,6 +20,7 @@ import {
   toggleSelectOne,
   toggleSelectAll,
 } from '@/features/news/newsSlice';
+import NewsFilters from '@/components/news/NewsFilters';
 
 export default function NewsPage() {
   const dispatch = useAppDispatch();
@@ -28,25 +29,25 @@ export default function NewsPage() {
   const perPage = useAppSelector(selectPerPage);
   const selectedIds = useAppSelector(selectSelectedIds);
 
-  const pageItems = useAppSelector((state: RootState) =>
-    selectPageItems(state, mockNews),
-  );
+  const items = useAppSelector((state) => state.news.items);
 
-  const allPages = useAppSelector((state: RootState) =>
-    selectTotalPages(state, mockNews),
-  );
+  const filtered = useAppSelector((state) => selectFilteredNews(state, items));
+
+  const pageItems = useAppSelector((state) => selectPageItems(state, filtered));
+
+  const allPages = useAppSelector((state) => selectTotalPages(state, filtered));
 
   const all = mockNews.length;
   const published = mockNews.filter((n) => n.type === 'Публичный').length;
   const drafts = mockNews.filter((n) => n.type === 'Черновик').length;
 
-  const allIds = mockNews.map((n) => n.id);
+  const allIds = filtered.map((n) => n.id);
 
   return (
     <div className="admin__content">
       <NewsHeader />
       <NewsCounters all={all} published={published} drafts={drafts} />
-
+      <NewsFilters />
       <NewsTable
         items={pageItems}
         allIds={allIds}

@@ -22,4 +22,5 @@ export interface NewsState {
   page: number;
   perPage: number;
   selectedIds: number[];
+  items: INewsItem[];
 }

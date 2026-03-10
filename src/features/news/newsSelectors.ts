@@ -15,3 +15,14 @@ export const selectPageItems = (state: RootState, allNews: INewsItem[]) => {
 export const selectTotalPages = (state: RootState, allNews: INewsItem[]) => {
   return Math.ceil(allNews.length / state.news.perPage);
 };
+
+export const selectFilteredNews = (state: RootState, allNews: INewsItem[]) => {
+  const { type, category, search } = state.news.filters;
+
+  return allNews
+    .filter((n) => !type || n.type === type)
+    .filter((n) => !category || n.category === category)
+    .filter(
+      (n) => !search || n.title.toLowerCase().includes(search.toLowerCase()),
+    );
+};
