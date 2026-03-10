@@ -18,12 +18,13 @@ export default function NewsPagination({
 
   return (
     <div className="news-pagination">
-      <p className="news-pagination__text">
+      <p className="news-pagination__text" data-testid="pagination-page">
         {' '}
         {page} из {allPages}{' '}
       </p>
       <button
         type="button"
+        data-testid="pagination-prev"
         className="news-pagination__arrow"
         onClick={prev}
         disabled={page === 1}
@@ -34,6 +35,7 @@ export default function NewsPagination({
 
       <button
         type="button"
+        data-testid="pagination-next"
         className="news-pagination__arrow"
         onClick={next}
         disabled={page === allPages}

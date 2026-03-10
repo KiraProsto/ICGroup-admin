@@ -32,6 +32,7 @@ export default function NewsTable({
               <input
                 type="checkbox"
                 className="news-table__checkbox"
+                data-testid="news-checkbox-all"
                 checked={allSelected}
                 onChange={() => onSelectAll(allIds)}
               />
@@ -59,11 +60,12 @@ export default function NewsTable({
             const isSelected = selectedIds.includes(item.id);
 
             return (
-              <Table.Tr key={item.id}>
+              <Table.Tr key={item.id} data-testid="news-row">
                 <Table.Td className="news-table__cell-td">
                   <input
                     type="checkbox"
                     className="news-table__checkbox"
+                    data-testid="news-checkbox"
                     checked={isSelected}
                     onChange={() => onSelectOne(item.id)}
                   />
