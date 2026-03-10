@@ -1,37 +1,38 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import LoginForm from './LoginForm';
+import { renderWithProviders } from '@/tests/test-utils';
 
 describe('LoginForm', () => {
   it('рендерит форму', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     expect(screen.getByText(/Вход/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Логин/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Введите пароль/i)).toBeInTheDocument();
   });
 
   it('вводит логин', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     const input = screen.getByPlaceholderText(/Логин/i);
     fireEvent.change(input, { target: { value: 'admin' } });
     expect(input).toHaveValue('admin');
   });
 
   it('вводит пароль', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     const input = screen.getByPlaceholderText(/Введите пароль/i);
     fireEvent.change(input, { target: { value: '123' } });
     expect(input).toHaveValue('123');
   });
 
   it('показывает ошибку при пустых полях', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     fireEvent.click(screen.getByRole('button', { name: /Войти/i }));
     expect(screen.getByText(/Неверный логин или пароль/i)).toBeInTheDocument();
   });
 
   it('очищает логин по клику на крестик', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     const input = screen.getByPlaceholderText(/Логин/i);
     fireEvent.change(input, { target: { value: 'test' } });
 
@@ -44,7 +45,7 @@ describe('LoginForm', () => {
   });
 
   it('переключает видимость пароля', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     const toggleBtn = screen.getByRole('button', { name: /Показать пароль/i });
     const input = screen.getByPlaceholderText(/Введите пароль/i);
 
@@ -55,7 +56,7 @@ describe('LoginForm', () => {
   });
 
   it('не показывает ошибку при валидных данных', () => {
-    render(<LoginForm />);
+    renderWithProviders(<LoginForm />);
     fireEvent.change(screen.getByPlaceholderText(/Логин/i), {
       target: { value: 'admin' },
     });
