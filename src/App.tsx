@@ -13,14 +13,14 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path='/admin' element={<AdminLayout />}>
+      <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminPage />} />
-        <Route path='news' element={<NewsPage />} />
-        <Route path='users' element={<UsersPage />} />
-        <Route path='about' element={<AboutPage />} />
-        <Route path='purchases' element={<PurchasesPage />} />
-        <Route path='contacts' element={<ContactsPage />} />
-        <Route path='shareholders' element={<ShareholdersPage />} />
+        <Route path="news" element={<NewsPage />} />
+        <Route path="users" element={<UsersPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="purchases" element={<PurchasesPage />} />
+        <Route path="contacts" element={<ContactsPage />} />
+        <Route path="shareholders" element={<ShareholdersPage />} />
       </Route>
     </Routes>
   );

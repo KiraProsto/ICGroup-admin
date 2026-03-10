@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import './Sidebar.css'
+import './Sidebar.css';
 
 export default function Sidebar() {
-    const location = useLocation()
+  const location = useLocation();
   const menu = [
     { label: 'Главная страница', href: '/admin' },
     { label: 'Новости', href: '/admin/news' },

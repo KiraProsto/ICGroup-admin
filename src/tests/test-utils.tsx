@@ -11,13 +11,8 @@ export function renderWithProviders(ui: ReactNode) {
       auth: authReducer,
       [authApi.reducerPath]: authApi.reducer,
     },
-    middleware: (getDefault) =>
-      getDefault().concat(authApi.middleware),
+    middleware: (getDefault) => getDefault().concat(authApi.middleware),
   });
 
-  return render(
-    <Provider store={store}>
-      {ui}
-    </Provider>
-  );
+  return render(<Provider store={store}>{ui}</Provider>);
 }
