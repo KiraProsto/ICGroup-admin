@@ -1,15 +1,6 @@
-export interface INewItem {
-  id: number;
-  title: string;
-  type: string;
-  category: string;
-  author: string;
-  date: string;
-  url: string;
-  views: number;
-}
+import type { INewsItem } from '@/features/news/newsTypes';
 
-export const mockNews: INewItem[] = Array.from({ length: 23 }).map((_, i) => ({
+export const mockNews: INewsItem[] = Array.from({ length: 23 }).map((_, i) => ({
   id: i + 1,
   title: 'Пример длинного названия новости в несколько строк',
   type: 'Публичный',

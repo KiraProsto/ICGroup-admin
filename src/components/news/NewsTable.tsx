@@ -1,22 +1,13 @@
 import { Table } from '@mantine/core';
+import type { INewsItem } from '@/features/news/newsTypes';
 import './news.css';
-
-interface INewsItem {
-  id: number;
-  title: string;
-  type: string;
-  category: string;
-  author: string;
-  date: string;
-  url: string;
-  views: number;
-}
 
 interface INewsTableProps {
   items: INewsItem[];
   allIds: number[];
   selectedIds: number[];
-  setSelectedIds: React.Dispatch<React.SetStateAction<number[]>>;
+  onSelectOne: (id: number) => void;
+  onSelectAll: (ids: number[]) => void;
   perPage: number;
 }
 
@@ -24,24 +15,11 @@ export default function NewsTable({
   items,
   allIds,
   selectedIds,
-  setSelectedIds,
+  onSelectOne,
+  onSelectAll,
   perPage,
 }: INewsTableProps) {
   const allSelected = selectedIds.length === allIds.length;
-
-  const toggleSelectAll = () => {
-    if (allSelected) {
-      setSelectedIds([]);
-    } else {
-      setSelectedIds(allIds);
-    }
-  };
-
-  const toggleSelectOne = (id: number) => {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
-    );
-  };
 
   const emptyRows = Array.from({ length: perPage - items.length });
 
@@ -55,7 +33,7 @@ export default function NewsTable({
                 type="checkbox"
                 className="news-table__checkbox"
                 checked={allSelected}
-                onChange={toggleSelectAll}
+                onChange={() => onSelectAll(allIds)}
               />
             </Table.Th>
 
@@ -87,7 +65,7 @@ export default function NewsTable({
                     type="checkbox"
                     className="news-table__checkbox"
                     checked={isSelected}
-                    onChange={() => toggleSelectOne(item.id)}
+                    onChange={() => onSelectOne(item.id)}
                   />
                 </Table.Td>
 
@@ -111,6 +89,7 @@ export default function NewsTable({
               </Table.Tr>
             );
           })}
+
           {emptyRows.map((_, i) => (
             <Table.Tr key={`empty-${i}`} className="news-table__empty-row">
               <Table.Td className="news-table__cell-td" colSpan={8}></Table.Td>

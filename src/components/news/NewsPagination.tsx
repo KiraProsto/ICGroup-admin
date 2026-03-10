@@ -1,6 +1,6 @@
 interface INewsPaginationProps {
   page: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
+  setPage: (page: number) => void;
   allPages: number;
 }
 
