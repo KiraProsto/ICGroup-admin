@@ -84,3 +84,28 @@
   max-width: 190px;
   word-break: break-all;
 }
+
+/* NewsPaginations */
+.news-pagination {
+  margin: -3px 14px;
+  padding: 24px 40px;
+  display: flex;
+  gap: 30px;
+  font-weight: 400;
+  font-size: 18px;
+
+  border: 2px solid var(--gray-3);
+  border-radius: 0px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+}
+.news-pagination__text {
+  margin-left: auto;
+}
+.news-pagination__arrow {
+  cursor: pointer;
+  & img {
+    width: 12px;
+  }
+}
