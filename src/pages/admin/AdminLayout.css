@@ -1,0 +1,10 @@
+.admin__layout {
+  display: flex;
+  height: 100%;
+  font-family: var(--font-main);
+  max-width: 2560px;
+}
+
+.admin__content {
+  flex: 1;
+}
