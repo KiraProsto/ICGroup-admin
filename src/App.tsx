@@ -8,6 +8,7 @@ import AboutPage from './pages/admin/AboutPage';
 import PurchasesPage from './pages/admin/PurchasesPage';
 import ContactsPage from './pages/admin/ContactsPage';
 import ShareholdersPage from './pages/admin/ShareholdersPage';
+import NewsAddPage from './pages/admin/NewsAddPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminPage />} />
         <Route path="news" element={<NewsPage />} />
+        <Route path="news/add" element={<NewsAddPage />} />
         <Route path="users" element={<UsersPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="purchases" element={<PurchasesPage />} />

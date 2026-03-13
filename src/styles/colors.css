@@ -26,3 +26,7 @@
 
   --font-main: 'Montserrat', sans-serif;
 }
+
+* {
+  font-family: var(--font-main);
+}
