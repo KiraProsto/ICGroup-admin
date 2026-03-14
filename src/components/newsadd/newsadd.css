@@ -1,3 +1,17 @@
+/* NewsAddPage */
+.news-add-layout {
+  display: flex;
+  border: 2px solid var(--gray-3);
+  margin: 24px 14px;
+  border-radius: 5px;
+}
+.news-add-layout__left {
+  flex: 1;
+}
+.news-add-layout__right {
+  margin-left: auto;
+}
+
 /* NewsAddHeader */
 .add-header {
   gap: 85px;
@@ -70,8 +84,9 @@
 /* CategorySelector */
 .add-category {
   display: flex;
-  margin: 48px 40px 0;
   gap: 16px;
+  border-bottom: 1px solid var(--gray-3);
+  padding: 24px 0 23.5px 24px;
 }
 
 .add-category__select-wrapper {
@@ -81,7 +96,7 @@
 }
 
 .add-category__select {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.2px;
   padding: 8px 40px 8px 16px;
@@ -105,13 +120,19 @@
   text-align: center;
 }
 
-.add-category__actions {
-  margin-left: auto;
-  display: flex;
-  gap: 24px;
+/* MediaActions */
+.add-media {
+  border-left: 1px solid var(--gray-3);
 }
 
-.add-category__action-btn {
+.add-media__actions {
+  display: flex;
+  gap: 24px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.add-media__action-btn {
   border: 1px solid var(--gray-3);
   border-radius: 5px;
   padding: 8px 16px;
@@ -121,4 +142,68 @@
     transition: 0.2s ease;
     background-color: var(--gray-1);
   }
+}
+
+.add-media__cards {
+  display: flex;
+  flex-direction: column;
+  max-width: 485px;
+  padding: 24px 33px;
+  gap: 20px;
+}
+.add-media__card {
+  cursor: pointer;
+}
+
+/* MediaPicker */
+.media-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+.media-picker__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+}
+.media-picker__window {
+  position: relative;
+  margin: 50px;
+  background: var(--white-0);
+  border-radius: 10px;
+  padding: 24px;
+  width: 560px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.media-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.media-picker__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.media-picker__item {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }

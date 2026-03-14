@@ -80,15 +80,6 @@ export default function CategorySelector() {
           onBlur={validateDate}
         />
       </div>
-
-      <div className="add-category__actions">
-        <button type="button" className="add-category__action-btn">
-          Добавить картинку
-        </button>
-        <button type="button" className="add-category__action-btn">
-          Добавить медиа
-        </button>
-      </div>
     </div>
   );
 }
