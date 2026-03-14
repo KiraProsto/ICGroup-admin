@@ -1,3 +1,4 @@
+import CategorySelector from '@/components/newsadd/CategorySelector';
 import NewsAddHeader from '@/components/newsadd/NewsAddHeader';
 import { useState } from 'react';
 
@@ -8,8 +9,8 @@ export default function NewsAddPage() {
   return (
     <div>
       <NewsAddHeader mode={mode} setMode={setMode} />
-      {/* {mode === 'publication' && </>}
-      {mode === 'text' && </>} */}
+      {mode === 'publication' && <CategorySelector />}
+      {/* {mode === 'text' && </>} */}
     </div>
   );
 }
