@@ -3,6 +3,7 @@ import authReducer from '../features/auth/authSlice';
 import { authApi } from '@/features/auth/authApi';
 import newsReducer from '@/features/news/newsSlice';
 import mediaReducer from '@/features/newsadd/media/mediaSlice';
+import authorsReducer from '@/features/newsadd/authors/authorsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     news: newsReducer,
     media: mediaReducer,
+    authors: authorsReducer,
   },
   middleware: (getDefault) => getDefault().concat(authApi.middleware),
 });
