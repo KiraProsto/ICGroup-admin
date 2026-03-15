@@ -4,6 +4,7 @@ import { authApi } from '@/features/auth/authApi';
 import newsReducer from '@/features/news/newsSlice';
 import mediaReducer from '@/features/newsadd/media/mediaSlice';
 import authorsReducer from '@/features/newsadd/authors/authorsSlice';
+import addImageReducer from '@/features/newsadd/addImage/addImageSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     news: newsReducer,
     media: mediaReducer,
     authors: authorsReducer,
+    image: addImageReducer,
   },
   middleware: (getDefault) => getDefault().concat(authApi.middleware),
 });

@@ -17,14 +17,31 @@
 .add__block {
   border-bottom: 1px solid var(--gray-3);
   padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .add__title {
   font-size: 24px;
-  margin-bottom: 16px;
   font-weight: 400;
 }
+
+.add__subtitle {
+  font-size: 18px;
+  font-weight: 400;
+}
+
 .add__input-title {
   width: 100%;
+  border: 1px solid var(--gray-3);
+  font-size: 14px;
+  padding: 16px;
+}
+
+.add__input-text {
+  width: 100%;
+  height: 100px;
+  overflow-y: auto;
   border: 1px solid var(--gray-3);
   font-size: 14px;
   padding: 16px;
@@ -259,4 +276,30 @@
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
+}
+
+/* AddImage */
+.add__img {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add__btn {
+  cursor: pointer;
+  padding-top: 2px;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.add__img-preview {
+  width: 200px;
+}
+
+.add__img-controls {
+  display: flex;
+  gap: 8px;
 }
