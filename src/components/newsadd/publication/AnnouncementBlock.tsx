@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import AddImage from './AddImage';
-import './newsadd.css';
+import AddImage from '../AddImage';
+import '../newsadd.css';
 import type { RootState } from '@/app/store';
 import { setImage } from '@/features/newsadd/addImage/addImageSlice';
 

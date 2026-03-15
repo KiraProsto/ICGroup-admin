@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './newsadd.css';
+import '../newsadd.css';
 
 export default function CategorySelector() {
   const rubric = [

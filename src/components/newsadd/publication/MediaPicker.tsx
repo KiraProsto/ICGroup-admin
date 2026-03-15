@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { MediaMockData } from './MediaMockData';
 import { addImage, closePicker } from '@/features/newsadd/media/mediaSlice';
+import '../newsadd.css';
 
 export default function MediaPicker() {
   const dispatch = useDispatch();

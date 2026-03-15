@@ -1,5 +1,5 @@
 import type { RootState } from '@/app/store';
-import './newsadd.css';
+import '../newsadd.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { openPicker } from '@/features/newsadd/media/mediaSlice';
 

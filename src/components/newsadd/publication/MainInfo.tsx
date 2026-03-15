@@ -4,6 +4,7 @@ import {
   setSearch,
 } from '@/features/newsadd/authors/authorsSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import '../newsadd.css';
 
 export default function MainInfo() {
   const dispatch = useDispatch();

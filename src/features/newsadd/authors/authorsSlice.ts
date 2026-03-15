@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { IAuthorsState } from './authorsTypes';
-import { AuthorsMockData } from '@/components/newsadd/AuthorsMockData';
+import { AuthorsMockData } from '@/components/newsadd/publication/AuthorsMockData';
 
 const initialState: IAuthorsState = {
   search: '',
