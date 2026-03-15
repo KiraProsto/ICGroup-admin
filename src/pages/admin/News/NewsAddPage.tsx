@@ -5,6 +5,7 @@ import MainInfo from '@/components/newsadd/publication/MainInfo';
 import MediaActions from '@/components/newsadd/publication/MediaActions';
 import MediaPicker from '@/components/newsadd/publication/MediaPicker';
 import NewsAddHeader from '@/components/newsadd/publication/NewsAddHeader';
+import PublicationIndex from '@/components/newsadd/publication/PublicationIndex';
 import RSSBlock from '@/components/newsadd/publication/RSSBlock';
 import SocialPublicationBlock from '@/components/newsadd/publication/SocialPublicationBlock';
 import { useState } from 'react';
@@ -26,7 +27,7 @@ export default function NewsAddPage() {
             <AnnouncementBlock />
             <SocialPublicationBlock />
             <RSSBlock />
-            {/* <PublicationIndex /> */}
+            <PublicationIndex />
           </div>
 
           <div className="news-add-layout__right">

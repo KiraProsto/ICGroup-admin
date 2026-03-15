@@ -355,3 +355,12 @@
     background-color: var(--black-3);
   }
 }
+
+/* PublicationIndex */
+.add__input-index {
+  width: 320px;
+  font-size: 18px;
+  font-weight: 400;
+  border: 1px solid var(--gray-3);
+  padding: 14px 16px;
+}
