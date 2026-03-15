@@ -2,13 +2,13 @@ import { Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import { AdminLayout } from './pages/admin/AdminLayout';
 import AdminPage from './pages/admin/AdminPage';
-import NewsPage from './pages/admin/NewsPage';
+import NewsPage from './pages/admin/News/NewsPage';
 import UsersPage from './pages/admin/UsersPage';
 import AboutPage from './pages/admin/AboutPage';
 import PurchasesPage from './pages/admin/PurchasesPage';
 import ContactsPage from './pages/admin/ContactsPage';
 import ShareholdersPage from './pages/admin/ShareholdersPage';
-import NewsAddPage from './pages/admin/NewsAddPage';
+import NewsAddPage from './pages/admin/News/NewsAddPage';
 
 export default function App() {
   return (

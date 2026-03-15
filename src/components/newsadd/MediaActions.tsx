@@ -1,7 +1,7 @@
 import type { RootState } from '@/app/store';
 import './newsadd.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { openPicker } from '@/features/newsadd/mediaSlice';
+import { openPicker } from '@/features/newsadd/media/mediaSlice';
 
 export default function MediaActions() {
   const dispatch = useDispatch();
