@@ -9,7 +9,42 @@
   flex: 1;
 }
 .news-add-layout__right {
+  border-left: 1px solid var(--gray-3);
   margin-left: auto;
+}
+
+/* all */
+.add__block {
+  border-bottom: 1px solid var(--gray-3);
+  padding: 24px 28px;
+}
+.add__title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.add__input-title {
+  width: 100%;
+  border: 1px solid var(--gray-3);
+  font-size: 14px;
+  padding: 16px;
+}
+
+.add__input-search {
+  box-sizing: border-box;
+  background-image: url('/newsadd/lupa.svg');
+  background-repeat: no-repeat;
+  background-size: 16.5px;
+  background-position: right 16px center;
+  padding: 16px;
+  padding-right: 40px;
+  width: 100%;
+  border: 1px solid var(--gray-3);
+  cursor: text;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 /* NewsAddHeader */
@@ -121,9 +156,6 @@
 }
 
 /* MediaActions */
-.add-media {
-  border-left: 1px solid var(--gray-3);
-}
 
 .add-media__actions {
   display: flex;

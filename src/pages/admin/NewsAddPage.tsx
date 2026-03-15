@@ -1,5 +1,6 @@
 import type { RootState } from '@/app/store';
 import CategorySelector from '@/components/newsadd/CategorySelector';
+import MainInfo from '@/components/newsadd/MainInfo';
 import MediaActions from '@/components/newsadd/MediaActions';
 import MediaPicker from '@/components/newsadd/MediaPicker';
 import NewsAddHeader from '@/components/newsadd/NewsAddHeader';
@@ -18,7 +19,7 @@ export default function NewsAddPage() {
         <div className="news-add-layout">
           <div className="news-add-layout__left">
             <CategorySelector />
-            {/* <MainInfo /> */}
+            <MainInfo />
             {/* <AnnouncementBlock/> */}
             {/* <SocialPublicationBlock /> */}
             {/* <RSSBlock /> */}
