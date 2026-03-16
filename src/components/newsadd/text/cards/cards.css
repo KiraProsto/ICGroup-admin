@@ -23,6 +23,35 @@
 
   white-space: pre-wrap;
   word-break: break-all;
+
+  &::placeholder {
+    font-size: 18px;
+  }
+}
+.card__img-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.card__img-preview {
+  width: 100%;
+  display: block;
+}
+
+.card__img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  display: flex;
+  align-items: flex-end;
+}
+
+.card__img-alt {
+  color: var(--white-0);
+  font-size: 24px;
 }
 
 /* Functions */
