@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.card__header {
+  display: flex;
+}
+
+.card__title {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.card__input-title {
+  width: 100%;
+  border: 1px solid var(--gray-3);
+  font-size: 14px;
+  padding: 16px;
+
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Functions */
+.card__function {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.card__function-img {
+  height: 20px;
+  cursor: pointer;
+}
