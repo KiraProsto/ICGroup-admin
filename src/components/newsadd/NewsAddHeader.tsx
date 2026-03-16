@@ -1,4 +1,4 @@
-import '../newsadd.css';
+import './newsadd.css';
 
 type Mode = 'publication' | 'text';
 

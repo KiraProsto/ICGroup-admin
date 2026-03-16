@@ -4,7 +4,7 @@ import CategorySelector from '@/components/newsadd/publication/CategorySelector'
 import MainInfo from '@/components/newsadd/publication/MainInfo';
 import MediaActions from '@/components/newsadd/publication/MediaActions';
 import MediaPicker from '@/components/newsadd/publication/MediaPicker';
-import NewsAddHeader from '@/components/newsadd/publication/NewsAddHeader';
+import NewsAddHeader from '@/components/newsadd/NewsAddHeader';
 import PublicationIndex from '@/components/newsadd/publication/PublicationIndex';
 import RSSBlock from '@/components/newsadd/publication/RSSBlock';
 import SocialPublicationBlock from '@/components/newsadd/publication/SocialPublicationBlock';
@@ -36,7 +36,19 @@ export default function NewsAddPage() {
         </div>
       )}
       {pickerOpen && <MediaPicker />}
-      {/* {mode === 'text' && </>} */}
+
+      {mode === 'text' && (
+        <div className="news-add-layout">
+          <div className="news-add-layout__left">
+            {/* <FunctionSelector /> */}
+            {/* <MainCard /> */}
+            {/* <CardsContainer /> */}
+          </div>
+          <div className="news-add-layout__right">
+            <MediaActions />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
