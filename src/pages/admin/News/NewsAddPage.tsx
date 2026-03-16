@@ -10,6 +10,7 @@ import RSSBlock from '@/components/newsadd/publication/RSSBlock';
 import SocialPublicationBlock from '@/components/newsadd/publication/SocialPublicationBlock';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import CardsContainer from '@/components/newsadd/text/CardsContainer';
 
 export default function NewsAddPage() {
   type Mode = 'publication' | 'text';
@@ -42,7 +43,7 @@ export default function NewsAddPage() {
           <div className="news-add-layout__left">
             {/* <FunctionSelector /> */}
             {/* <MainCard /> */}
-            {/* <CardsContainer /> */}
+            <CardsContainer />
           </div>
           <div className="news-add-layout__right">
             <MediaActions />
