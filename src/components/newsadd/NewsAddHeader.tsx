@@ -1,6 +1,6 @@
 import './newsadd.css';
 
-type Mode = 'publication' | 'text';
+type Mode = 'publication' | 'text_redaction';
 
 interface INewsAddHeaderProps {
   mode: Mode;
@@ -25,11 +25,11 @@ export default function NewsAddHeader({ mode, setMode }: INewsAddHeaderProps) {
         <button
           type="button"
           className={
-            mode === 'text'
+            mode === 'text_redaction'
               ? 'add-header__mode-btn add-header__mode-btn-active'
               : 'add-header__mode-btn'
           }
-          onClick={() => setMode('text')}
+          onClick={() => setMode('text_redaction')}
         >
           Редактирование текста
         </button>

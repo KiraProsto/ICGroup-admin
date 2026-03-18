@@ -364,3 +364,11 @@
   border: 1px solid var(--gray-3);
   padding: 14px 16px;
 }
+
+/* FunctionSelector */
+.add-functions__actions {
+  display: flex;
+  gap: 24px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--gray-3);
+}

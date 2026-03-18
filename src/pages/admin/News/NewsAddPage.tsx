@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import CardsContainer from '@/components/newsadd/text/CardsContainer';
 
 export default function NewsAddPage() {
-  type Mode = 'publication' | 'text';
+  type Mode = 'publication' | 'text_redaction';
   const [mode, setMode] = useState<Mode>('publication');
   const pickerOpen = useSelector((state: RootState) => state.media.pickerOpen);
 
@@ -38,13 +38,12 @@ export default function NewsAddPage() {
       )}
       {pickerOpen && <MediaPicker />}
 
-      {mode === 'text' && (
+      {mode === 'text_redaction' && (
         <div className="news-add-layout">
           <div className="news-add-layout__left">
-            {/* <FunctionSelector /> */}
-            {/* <MainCard /> */}
             <CardsContainer />
           </div>
+
           <div className="news-add-layout__right">
             <MediaActions />
           </div>

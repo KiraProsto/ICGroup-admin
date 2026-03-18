@@ -9,13 +9,13 @@ export default function TextCard() {
 
   const COLORS = [
     '#000000',
-    '#444444',
     '#888888',
     '#CCCCCC',
     '#FFFFFF',
     '#FF0000',
     '#FF7F00',
     '#FFFF00',
+    '#1DE9B6',
     '#00FF00',
     '#00FFFF',
     '#0000FF',
