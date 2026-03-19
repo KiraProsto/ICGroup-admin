@@ -1,8 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './cards.css';
 import Functions from './Functions';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '@/app/store';
+import { updateCardContent } from '@/features/newsadd/cards/CardsSlice';
 
-export default function TextCard() {
+export default function TextCard({
+  id,
+  moveUp,
+  moveDown,
+  deleteCard,
+}: {
+  id: string;
+  moveUp: (id: string) => void;
+  moveDown: (id: string) => void;
+  deleteCard: (id: string) => void;
+}) {
   const [showTextPalette, setShowTextPalette] = useState(false);
   const [showBgPalette, setShowBgPalette] = useState(false);
   const [savedRange, setSavedRange] = useState<Range | null>(null);
@@ -74,11 +87,27 @@ export default function TextCard() {
     document.execCommand('insertOrderedList');
   };
 
+  const card = useSelector((state: RootState) =>
+    state.cards.list.find((c) => c.id === id),
+  );
+  const dispatch = useDispatch();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current && card?.content && ref.current.innerHTML === '') {
+      ref.current.innerHTML = card.content;
+    }
+  }, []);
+
   return (
     <div className="card">
       <div className="card__header">
         <h1 className="card__title">Текст</h1>
-        <Functions />
+        <Functions
+          onUp={() => moveUp(id)}
+          onDown={() => moveDown(id)}
+          onDelete={() => deleteCard(id)}
+        />
       </div>
       <div className="card__text-wrapper">
         <div className="card__text-functions">
@@ -202,7 +231,16 @@ export default function TextCard() {
             </button>
           </div>
         </div>
-        <div className="card__input-title" contentEditable="true" />
+        <div
+          ref={ref}
+          className="card__input-title"
+          contentEditable
+          onInput={(e) =>
+            dispatch(
+              updateCardContent({ id, content: e.currentTarget.innerHTML }),
+            )
+          }
+        />
       </div>
     </div>
   );

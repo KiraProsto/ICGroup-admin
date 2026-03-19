@@ -3,30 +3,56 @@ import './cards.css';
 import '../../newsadd.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectPublications,
-  setSearch,
-} from '@/features/newsadd/publications/publicationsSlice';
+  updateCardSearch,
+  selectCardPublication,
+} from '@/features/newsadd/cards/CardsSlice';
 import type { RootState } from '@/app/store';
+import { PublicationMockData } from './PublicationMockData';
 
-export default function PublicationCard() {
+export default function PublicationCard({
+  id,
+  moveUp,
+  moveDown,
+  deleteCard,
+}: {
+  id: string;
+  moveUp: (id: string) => void;
+  moveDown: (id: string) => void;
+  deleteCard: (id: string) => void;
+}) {
   const dispatch = useDispatch();
-  const search = useSelector((state: RootState) => state.publications.search);
-  const suggestions = useSelector(
-    (state: RootState) => state.publications.suggestions,
+
+  const card = useSelector((state: RootState) =>
+    state.cards.list.find((c) => c.id === id),
   );
+
+  if (!card) return null;
+  const suggestions =
+    card.search && card.search.trim()
+      ? PublicationMockData.filter((title) =>
+          title.toLowerCase().includes(card.search.toLowerCase()),
+        ).slice(0, 4)
+      : [];
 
   return (
     <div className="card">
       <div className="card__header">
         <h1 className="card__title">Публикация</h1>
-        <Functions />
+        <Functions
+          onUp={() => moveUp(id)}
+          onDown={() => moveDown(id)}
+          onDelete={() => deleteCard(id)}
+        />
       </div>
+
       <div className="add__input-wrapper">
         <input
           type="text"
           className="add__input-search"
-          value={search}
-          onChange={(e) => dispatch(setSearch(e.target.value))}
+          value={card.selectedPublication || card.search || ''}
+          onChange={(e) =>
+            dispatch(updateCardSearch({ id, search: e.target.value }))
+          }
         />
 
         {suggestions.length > 0 && (
@@ -35,7 +61,9 @@ export default function PublicationCard() {
               <li
                 key={name}
                 className="add__suggestion-item"
-                onClick={() => dispatch(selectPublications(name))}
+                onClick={() =>
+                  dispatch(selectCardPublication({ id, publication: name }))
+                }
               >
                 {name}
               </li>

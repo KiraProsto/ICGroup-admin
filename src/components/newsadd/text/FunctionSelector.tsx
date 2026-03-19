@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import '../newsadd.css';
+import type { CardType } from '@/features/newsadd/cards/CardsTypes';
 
 export default function FunctionSelector({
   onAddCard,
 }: {
-  onAddCard: (type: string) => void;
+  onAddCard: (type: CardType) => void;
 }) {
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState<CardType | ''>('');
 
-  const functions = [
+  const functions: { value: CardType; label: string }[] = [
     { value: 'text_card', label: 'Текст' },
     { value: 'quote_card', label: 'Цитата' },
     { value: 'publication_card', label: 'Публикация' },
@@ -21,7 +22,7 @@ export default function FunctionSelector({
         <select
           className="add-category__select"
           value={selected}
-          onChange={(e) => setSelected(e.target.value)}
+          onChange={(e) => setSelected(e.target.value as CardType)}
         >
           <option value="" disabled>
             Тип карточки
