@@ -106,6 +106,17 @@ export const cardsSlice = createSlice({
         card.videoAlt = action.payload.alt;
       }
     },
+
+    resetCards(state) {
+      state.list = [
+        {
+          id: crypto.randomUUID(),
+          type: 'text_card',
+          search: '',
+          selectedPublication: '',
+        },
+      ];
+    },
   },
 });
 
@@ -120,6 +131,7 @@ export const {
   updateCardQuote,
   updateCardImage,
   updateCardVideo,
+  resetCards,
 } = cardsSlice.actions;
 
 export default cardsSlice.reducer;
