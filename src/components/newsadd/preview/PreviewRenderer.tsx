@@ -9,7 +9,7 @@ import './preview.css';
 export default function PreviewRenderer() {
   const cards = useSelector((state: RootState) => state.cards.list);
   return (
-    <div className="preview-renderer">
+    <div className="preview-renderer" role="document">
       {cards.map((card, index) => {
         const next = cards[index + 1];
 

@@ -5,5 +5,15 @@ export default function PreviewPublication({
 }: {
   publication: string;
 }) {
-  return <div className="preview-publication">{publication}</div>;
+  return (
+    <a
+      href={publication}
+      className="preview-publication"
+      aria-label={`Открыть публикацию: ${publication}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {publication}
+    </a>
+  );
 }
