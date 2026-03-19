@@ -57,6 +57,27 @@ export default function TextCard({
     selection.addRange(newRange);
   };
 
+  const applyFontSize = (size: string) => {
+    const selection = window.getSelection();
+    if (!selection || !selection.rangeCount) return;
+
+    const range = selection.getRangeAt(0);
+    const selectedText = selection.toString();
+
+    const span = document.createElement('span');
+    span.style.fontSize = `${size}px`;
+    span.textContent = selectedText;
+
+    range.deleteContents();
+    range.insertNode(span);
+
+    const newRange = document.createRange();
+    newRange.selectNodeContents(span);
+
+    selection.removeAllRanges();
+    selection.addRange(newRange);
+  };
+
   const restoreSelection = () => {
     const sel = window.getSelection();
     if (savedRange && sel) {
@@ -113,6 +134,7 @@ export default function TextCard({
         <div className="card__text-functions">
           <select
             className="card__text-select"
+            aria-label="жирность текста"
             onChange={(e) => applyWeight(e.target.value)}
           >
             <option value="300">Light</option>
@@ -120,6 +142,19 @@ export default function TextCard({
             <option value="600">Semi Bold</option>
             <option value="700">Bold</option>
             <option value="900">Black</option>
+          </select>
+
+          <select
+            className="card__text-select"
+            aria-label="размер текста"
+            onChange={(e) => applyFontSize(e.target.value)}
+          >
+            <option value="16">16</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="32">32</option>
+            <option value="36">36</option>
           </select>
 
           <div className="card__text-decoration">
