@@ -17,6 +17,7 @@ export default function SocialPublicationBlock() {
           <button
             type="button"
             className="add-social__mode-btn add-social__mode-btn-active"
+            aria-pressed="true"
           >
             Facebook
           </button>
@@ -31,10 +32,21 @@ export default function SocialPublicationBlock() {
           </button>
         </div>
 
-        <h3 className="add__subtitle">Заголовок</h3>
-        <input type="text" className="add__input-title" />
-        <h3 className="add__subtitle">Текст</h3>
-        <textarea className="add__input-text" />
+        <h3 className="add__subtitle" id="social-title-label">
+          Заголовок
+        </h3>
+        <input
+          type="text"
+          className="add__input-title"
+          aria-labelledby="social-title-label"
+        />
+        <h3 className="add__subtitle" id="social-text-label">
+          Текст
+        </h3>
+        <textarea
+          className="add__input-text"
+          aria-labelledby="social-text-label"
+        />
         <AddImage
           value={image}
           onChange={(file) => dispatch(setImage({ key: 'social', file }))}

@@ -19,6 +19,7 @@ export default function NewsAddHeader({ mode, setMode }: INewsAddHeaderProps) {
               : 'add-header__mode-btn'
           }
           onClick={() => setMode('publication')}
+          aria-pressed={mode === 'publication'}
         >
           Редактирование публикации
         </button>
@@ -30,19 +31,30 @@ export default function NewsAddHeader({ mode, setMode }: INewsAddHeaderProps) {
               : 'add-header__mode-btn'
           }
           onClick={() => setMode('text_redaction')}
+          aria-pressed={mode === 'text_redaction'}
         >
           Редактирование текста
         </button>
       </div>
 
       <div className="add-header__url-block">
-        <label className="add-header__url-label">URL</label>
-        <input type="text" className="add-header__url-input" />
+        <label htmlFor="news-url" className="add-header__url-label">
+          URL
+        </label>
+        <input id="news-url" type="text" className="add-header__url-input" />
         <div className="add-header__actions">
-          <button className="add-header__action-btn">Публикация</button>
-          <button className="add-header__action-btn">Превью</button>
-          <button className="add-header__action-btn">Черновик</button>
-          <button className="add-header__action-btn">Удалить</button>
+          <button type="button" className="add-header__action-btn">
+            Публикация
+          </button>
+          <button type="button" className="add-header__action-btn">
+            Превью
+          </button>
+          <button type="button" className="add-header__action-btn">
+            Черновик
+          </button>
+          <button type="button" className="add-header__action-btn">
+            Удалить
+          </button>
         </div>
       </div>
     </div>

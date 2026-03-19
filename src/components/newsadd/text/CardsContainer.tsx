@@ -49,7 +49,7 @@ export default function CardsContainer() {
     }
   };
   return (
-    <div className="cards-container">
+    <div className="cards-container" role="list">
       {cards.length <= 2 && <FunctionSelector onAddCard={handleAddCard} />}
       {cards.map(renderCard)}
       {cards.length > 2 && <FunctionSelector onAddCard={handleAddCard} />}

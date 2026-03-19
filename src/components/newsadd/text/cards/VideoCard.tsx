@@ -62,7 +62,12 @@ export default function VideoCard({
       />
 
       {card?.videoUrl && (
-        <video src={card?.videoUrl} className="card__img-preview" controls />
+        <video
+          src={card?.videoUrl}
+          className="card__img-preview"
+          controls
+          aria-label="Видео в карточке"
+        />
       )}
     </div>
   );

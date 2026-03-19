@@ -24,7 +24,7 @@ export default function AddImage({ value, onChange }: IAddImageFieldProps) {
           aria-label="Добавить изображение из галереи"
           onClick={() => fileRef.current?.click()}
         >
-          <img src="/news/addnews.svg" alt="Добавить изображение" />
+          <img src="/news/addnews.svg" alt="" aria-hidden="true" />
         </button>
       </div>
 

@@ -11,10 +11,21 @@ export default function AnnouncementBlock() {
     <div className="add-announce">
       <div className="add__block">
         <h2 className="add__title">Анонс</h2>
-        <h3 className="add__subtitle">Заголовок</h3>
-        <input type="text" className="add__input-title" />
-        <h3 className="add__subtitle">Текст</h3>
-        <textarea className="add__input-text" />
+        <h3 className="add__subtitle" id="announce-title-label">
+          Заголовок
+        </h3>
+        <input
+          type="text"
+          className="add__input-title"
+          aria-labelledby="announce-title-label"
+        />
+        <h3 className="add__subtitle" id="announce-text-label">
+          Текст
+        </h3>
+        <textarea
+          className="add__input-text"
+          aria-labelledby="announce-text-label"
+        />
         <AddImage
           value={image}
           onChange={(file) => dispatch(setImage({ key: 'announcement', file }))}

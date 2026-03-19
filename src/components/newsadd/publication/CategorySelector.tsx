@@ -78,6 +78,7 @@ export default function CategorySelector() {
           value={value}
           onChange={handleChange}
           onBlur={validateDate}
+          aria-label="Дата публикации"
         />
       </div>
     </div>

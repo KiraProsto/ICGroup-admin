@@ -49,6 +49,9 @@ export default function QuoteCard({
             updateCardQuote({ id, quote: e.currentTarget.textContent || '' }),
           )
         }
+        role="textbox"
+        aria-multiline="true"
+        aria-label="Цитата"
       />
     </div>
   );

@@ -14,10 +14,15 @@ export default function MediaActions() {
           type="button"
           className="add-media__action-btn"
           onClick={() => dispatch(openPicker())}
+          aria-label="Добавить изображение из локальной библиотеки"
         >
           Добавить картинку
         </button>
-        <button type="button" className="add-media__action-btn">
+        <button
+          type="button"
+          className="add-media__action-btn"
+          aria-label="Добавить видео из локальной библиотеки"
+        >
           Добавить медиа
         </button>
       </div>

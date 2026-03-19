@@ -35,6 +35,7 @@ export default function FunctionSelector({
           ))}
         </select>
         <button
+          type="button"
           className="add-header__action-btn"
           onClick={() => selected && onAddCard(selected)}
         >

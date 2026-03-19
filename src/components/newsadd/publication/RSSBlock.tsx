@@ -15,6 +15,7 @@ export default function RSSBlock() {
           <button
             type="button"
             className="add-rss__mode-btn add-rss__mode-btn-active"
+            aria-pressed="true"
           >
             Яндекс.Новости
           </button>

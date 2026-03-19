@@ -53,13 +53,19 @@ export default function PublicationCard({
           onChange={(e) =>
             dispatch(updateCardSearch({ id, search: e.target.value }))
           }
+          aria-autocomplete="list"
+          aria-controls={`pub-list-${id}`}
+          aria-expanded={suggestions.length > 0}
+          aria-label="Поиск публикации"
         />
 
         {suggestions.length > 0 && (
-          <ul className="add__suggestions">
+          <ul className="add__suggestions" id={`pub-list-${id}`} role="listbox">
             {suggestions.map((name) => (
               <li
                 key={name}
+                role="option"
+                aria-selected={false}
                 className="add__suggestion-item"
                 onClick={() =>
                   dispatch(selectCardPublication({ id, publication: name }))

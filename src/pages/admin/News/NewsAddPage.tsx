@@ -18,10 +18,14 @@ export default function NewsAddPage() {
   const pickerOpen = useSelector((state: RootState) => state.media.pickerOpen);
 
   return (
-    <div>
+    <div role="main">
       <NewsAddHeader mode={mode} setMode={setMode} />
       {mode === 'publication' && (
-        <div className="news-add-layout">
+        <div
+          className="news-add-layout"
+          role="region"
+          aria-label="Редактирование публикации"
+        >
           <div className="news-add-layout__left">
             <CategorySelector />
             <MainInfo />
@@ -39,7 +43,10 @@ export default function NewsAddPage() {
       {pickerOpen && <MediaPicker />}
 
       {mode === 'text_redaction' && (
-        <div className="news-add-layout">
+        <div
+          className="news-add-layout"
+          aria-label="Редактирование текста публикации"
+        >
           <div className="news-add-layout__left">
             <CardsContainer />
           </div>

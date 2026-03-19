@@ -28,13 +28,18 @@ export default function MainInfo() {
             className="add__input-search"
             value={search}
             onChange={(e) => dispatch(setSearch(e.target.value))}
+            aria-autocomplete="list"
+            aria-controls="authors-list"
+            aria-label="Поиск автора"
           />
 
           {suggestions.length > 0 && (
-            <ul className="add__suggestions">
+            <ul className="add__suggestions" id="authors-list" role="listbox">
               {suggestions.map((name) => (
                 <li
                   key={name}
+                  role="option"
+                  aria-selected={false}
                   className="add__suggestion-item"
                   onClick={() => dispatch(selectAuthors(name))}
                 >

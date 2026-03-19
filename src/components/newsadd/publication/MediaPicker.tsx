@@ -12,8 +12,15 @@ export default function MediaPicker() {
         onClick={() => dispatch(closePicker())}
       ></div>
 
-      <div className="media-picker__window">
-        <h3 className="media-picker__title">Выберите картинку</h3>
+      <div
+        className="media-picker__window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="media-picker-title"
+      >
+        <h3 className="media-picker__title" id="media-picker-title">
+          Выберите картинку
+        </h3>
         <div className="media-picker__grid">
           {MediaMockData.map((img) => (
             <img

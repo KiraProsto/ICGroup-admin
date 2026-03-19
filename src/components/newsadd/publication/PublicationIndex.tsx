@@ -5,7 +5,11 @@ export default function PublicationIndex() {
     <div className="add-index">
       <div className="add__block">
         <h2 className="add__title">Индекст публикации</h2>
-        <input type="text" className="add__input-index" />
+        <input
+          type="text"
+          className="add__input-index"
+          aria-label="Индекс публикации"
+        />
       </div>
     </div>
   );

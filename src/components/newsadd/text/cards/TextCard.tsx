@@ -127,22 +127,39 @@ export default function TextCard({
           </select>
 
           <div className="card__text-decoration">
-            <button onClick={() => document.execCommand('bold')}>
+            <button
+              type="button"
+              aria-label="Жирный текст"
+              onClick={() => document.execCommand('bold')}
+            >
               <b>B</b>
             </button>
-            <button onClick={() => document.execCommand('italic')}>
+            <button
+              type="button"
+              aria-label="Курсив"
+              onClick={() => document.execCommand('italic')}
+            >
               <i>I</i>
             </button>
-            <button onClick={() => document.execCommand('underline')}>
+            <button
+              type="button"
+              aria-label="Подчеркнутый"
+              onClick={() => document.execCommand('underline')}
+            >
               <u>U</u>
             </button>
-            <button onClick={() => document.execCommand('strikeThrough')}>
+            <button
+              type="button"
+              aria-label="Зачеркнутый"
+              onClick={() => document.execCommand('strikeThrough')}
+            >
               <s>S</s>
             </button>
           </div>
 
           <div className="card__text-color-decoration">
             <button
+              type="button"
               onMouseDown={() => {
                 const sel = window.getSelection();
                 if (sel && sel.rangeCount > 0) {
@@ -158,11 +175,12 @@ export default function TextCard({
             </button>
 
             {showTextPalette && (
-              <div className="palette">
+              <div className="palette" role="menu">
                 {COLORS.map((c) => (
                   <div
                     key={c}
                     className="palette-color"
+                    role="menuitem"
                     style={{ backgroundColor: c }}
                     onClick={() => applyColor(c)}
                   />
@@ -171,6 +189,7 @@ export default function TextCard({
             )}
 
             <button
+              type="button"
               onMouseDown={() => {
                 const sel = window.getSelection();
                 if (sel && sel.rangeCount > 0) {
@@ -201,6 +220,7 @@ export default function TextCard({
 
           <div className="card__text-list-decoration">
             <button
+              type="button"
               onMouseDown={() => {
                 const sel = window.getSelection();
                 if (sel && sel.rangeCount > 0) {
@@ -216,6 +236,7 @@ export default function TextCard({
             </button>
 
             <button
+              type="button"
               onMouseDown={() => {
                 const sel = window.getSelection();
                 if (sel && sel.rangeCount > 0) {
@@ -240,6 +261,9 @@ export default function TextCard({
               updateCardContent({ id, content: e.currentTarget.innerHTML }),
             )
           }
+          role="textbox"
+          aria-multiline="true"
+          aria-label="Текст карточки"
         />
       </div>
     </div>
