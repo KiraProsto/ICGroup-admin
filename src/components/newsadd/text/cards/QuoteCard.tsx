@@ -24,7 +24,7 @@ export default function QuoteCard({
 
   useEffect(() => {
     if (ref.current && card?.quote && ref.current.innerHTML === '') {
-      ref.current.textContent = card.quote;
+      ref.current.innerHTML = card.quote;
     }
   }, [card?.quote]);
 
@@ -46,7 +46,7 @@ export default function QuoteCard({
         contentEditable
         onInput={(e) =>
           dispatch(
-            updateCardQuote({ id, quote: e.currentTarget.textContent || '' }),
+            updateCardQuote({ id, quote: e.currentTarget.innerHTML || '' }),
           )
         }
         role="textbox"

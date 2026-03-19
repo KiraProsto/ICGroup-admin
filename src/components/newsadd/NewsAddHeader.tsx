@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './newsadd.css';
+import PreviewModal from './preview/PreviewModal';
 
 type Mode = 'publication' | 'text_redaction';
 
@@ -8,6 +10,8 @@ interface INewsAddHeaderProps {
 }
 
 export default function NewsAddHeader({ mode, setMode }: INewsAddHeaderProps) {
+  const [previewOpen, setPreviewOpen] = useState(false);
+
   return (
     <div className="add-header">
       <div className="add-header__modes">
@@ -46,7 +50,11 @@ export default function NewsAddHeader({ mode, setMode }: INewsAddHeaderProps) {
           <button type="button" className="add-header__action-btn">
             Публикация
           </button>
-          <button type="button" className="add-header__action-btn">
+          <button
+            type="button"
+            className="add-header__action-btn"
+            onClick={() => setPreviewOpen(true)}
+          >
             Превью
           </button>
           <button type="button" className="add-header__action-btn">
@@ -57,6 +65,8 @@ export default function NewsAddHeader({ mode, setMode }: INewsAddHeaderProps) {
           </button>
         </div>
       </div>
+
+      {previewOpen && <PreviewModal onClose={() => setPreviewOpen(false)} />}
     </div>
   );
 }

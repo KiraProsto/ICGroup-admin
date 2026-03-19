@@ -115,14 +115,10 @@ export default function TextCard({
             className="card__text-select"
             onChange={(e) => applyWeight(e.target.value)}
           >
-            <option value="100">Thin</option>
-            <option value="200">Extra Light</option>
             <option value="300">Light</option>
             <option value="400">Normal</option>
-            <option value="500">Medium</option>
             <option value="600">Semi Bold</option>
             <option value="700">Bold</option>
-            <option value="800">Extra Bold</option>
             <option value="900">Black</option>
           </select>
 
