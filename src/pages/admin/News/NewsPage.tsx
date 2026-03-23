@@ -4,7 +4,6 @@ import NewsCounters from '@/components/news/NewsCounters';
 import NewsHeader from '@/components/news/NewsHeader';
 import NewsPagination from '@/components/news/NewsPagination';
 import NewsTable from '@/components/news/NewsTable';
-import { mockNews } from '@/components/news/NewsMockData';
 
 import {
   selectPage,
@@ -37,9 +36,9 @@ export default function NewsPage() {
 
   const allPages = useAppSelector((state) => selectTotalPages(state, filtered));
 
-  const all = mockNews.length;
-  const published = mockNews.filter((n) => n.type === 'Публичный').length;
-  const drafts = mockNews.filter((n) => n.type === 'Черновик').length;
+  const all = filtered.length;
+  const published = filtered.filter((n) => n.type === 'Публичный').length;
+  const drafts = filtered.filter((n) => n.type === 'Черновик').length;
 
   const allIds = filtered.map((n) => n.id);
 
