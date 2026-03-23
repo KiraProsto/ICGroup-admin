@@ -5,6 +5,7 @@ import PreviewPublication from './PreviewPublication';
 import PreviewImage from './PreviewImage';
 import PreviewVideo from './PreviewVideo';
 import './preview.css';
+import DOMPurify from 'dompurify';
 
 export default function PreviewRenderer() {
   const cards = useSelector((state: RootState) => state.cards.list);
@@ -24,7 +25,22 @@ export default function PreviewRenderer() {
                 style={{ marginBottom }}
                 key={card.id}
                 className="preview-text"
-                dangerouslySetInnerHTML={{ __html: card.content ?? '' }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(card.content ?? '', {
+                    ALLOWED_TAGS: [
+                      'b',
+                      'i',
+                      'u',
+                      's',
+                      'span',
+                      'ul',
+                      'ol',
+                      'li',
+                      'br',
+                    ],
+                    ALLOWED_ATTR: ['style'],
+                  }),
+                }}
               />
             );
           case 'quote_card':
