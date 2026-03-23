@@ -49,10 +49,11 @@ export default function PublicationCard({
         <input
           type="text"
           className="add__input-search"
-          value={card.selectedPublication || card.search || ''}
-          onChange={(e) =>
-            dispatch(updateCardSearch({ id, search: e.target.value }))
-          }
+          value={card.selectedPublication?.title || card.search || ''}
+          onChange={(e) => {
+            dispatch(selectCardPublication({ id, publication: null }));
+            dispatch(updateCardSearch({ id, search: e.target.value }));
+          }}
           aria-autocomplete="list"
           aria-controls={`pub-list-${id}`}
           aria-expanded={suggestions.length > 0}
@@ -68,7 +69,12 @@ export default function PublicationCard({
                 aria-selected={false}
                 className="add__suggestion-item"
                 onClick={() =>
-                  dispatch(selectCardPublication({ id, publication: name }))
+                  dispatch(
+                    selectCardPublication({
+                      id,
+                      publication: { title: name, url: '#' },
+                    }),
+                  )
                 }
               >
                 {name}

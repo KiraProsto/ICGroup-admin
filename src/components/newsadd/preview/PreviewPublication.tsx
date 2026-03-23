@@ -3,17 +3,19 @@ import './preview.css';
 export default function PreviewPublication({
   publication,
 }: {
-  publication: string;
+  publication: { title: string; url: string } | null;
 }) {
+  if (!publication) return null;
+
   return (
     <a
-      href={publication}
+      href={publication.url}
       className="preview-publication"
-      aria-label={`Открыть публикацию: ${publication}`}
+      aria-label={`Открыть публикацию: ${publication.title}`}
       target="_blank"
       rel="noopener noreferrer"
     >
-      {publication}
+      {publication.title}
     </a>
   );
 }

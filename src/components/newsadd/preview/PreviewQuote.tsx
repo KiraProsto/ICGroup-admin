@@ -1,4 +1,5 @@
 import './preview.css';
+import DOMPurify from 'dompurify';
 
 export default function PreviewQuote({ quote }: { quote: string }) {
   return (
@@ -12,7 +13,11 @@ export default function PreviewQuote({ quote }: { quote: string }) {
 
       <div
         className="preview-quote__content"
-        dangerouslySetInnerHTML={{ __html: quote }}
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(quote, {
+            ALLOWED_TAGS: ['div', 'br'],
+          }),
+        }}
       />
     </blockquote>
   );

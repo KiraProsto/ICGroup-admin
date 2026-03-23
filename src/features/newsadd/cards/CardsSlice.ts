@@ -11,7 +11,7 @@ const initialState: CardsState = {
       id: crypto.randomUUID(),
       type: 'text_card',
       search: '',
-      selectedPublication: '',
+      selectedPublication: null,
     },
   ],
 };
@@ -25,7 +25,7 @@ export const cardsSlice = createSlice({
         id: crypto.randomUUID(),
         type: action.payload,
         search: '',
-        selectedPublication: '',
+        selectedPublication: null,
       });
     },
 
@@ -71,7 +71,10 @@ export const cardsSlice = createSlice({
 
     selectCardPublication(
       state,
-      action: PayloadAction<{ id: string; publication: string }>,
+      action: PayloadAction<{
+        id: string;
+        publication: { title: string; url: string } | null;
+      }>,
     ) {
       const card = state.list.find((c) => c.id === action.payload.id);
       if (card) card.selectedPublication = action.payload.publication;
@@ -113,7 +116,7 @@ export const cardsSlice = createSlice({
           id: crypto.randomUUID(),
           type: 'text_card',
           search: '',
-          selectedPublication: '',
+          selectedPublication: null,
         },
       ];
     },

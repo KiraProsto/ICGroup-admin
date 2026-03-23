@@ -14,7 +14,10 @@ export interface ICardsState {
   quote?: string;
 
   search: string;
-  selectedPublication: string;
+  selectedPublication: {
+    title: string;
+    url: string;
+  } | null;
 
   imgUrl?: string;
   imgAlt?: string;
