@@ -28,23 +28,24 @@
   display: flex;
   flex-direction: column;
   padding: 80px;
-
-  & ul,
-  & ol {
-    margin: 0;
-    padding-left: 20px;
-  }
 }
+.preview-window ul,
+.preview-window ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
 .preview-btn {
   position: absolute;
   top: 40px;
   right: 40px;
   cursor: pointer;
-
-  & img {
-    width: 25px;
-  }
 }
+
+.preview-btn img {
+  width: 25px;
+}
+
 .preview-content {
   height: 100%;
   width: 100%;
@@ -76,13 +77,13 @@
   cursor: pointer;
   text-decoration: none;
   color: var(--black-9);
+}
 
-  &:hover {
-    transition: 0.3s ease;
-    background: var(--main-2);
-    color: var(--white-0);
-    border: 1px dashed var(--white-0);
-  }
+.preview-publication:hover {
+  transition: 0.3s ease;
+  background: var(--main-2);
+  color: var(--white-0);
+  border: 1px dashed var(--white-0);
 }
 
 /* PreviewImage */

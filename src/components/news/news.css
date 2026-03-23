@@ -14,21 +14,19 @@
 
 .news-header__add-btn {
   cursor: pointer;
-
-  & img {
-    width: 20px;
-    height: 20px;
-  }
+}
+.news-header__add-btn img {
+  width: 20px;
+  height: 20px;
 }
 
 .news-header__settings-btn {
   margin-left: auto;
   cursor: pointer;
-
-  & img {
-    width: 25px;
-    height: 25px;
-  }
+}
+.news-header__settings-btn img {
+  width: 25px;
+  height: 25px;
 }
 
 /* NewsCounters */
@@ -111,9 +109,9 @@
 }
 .news-pagination__arrow {
   cursor: pointer;
-  & img {
-    width: 12px;
-  }
+}
+.news-pagination__arrow img {
+  width: 12px;
 }
 
 /* NewsFilters */
@@ -148,11 +146,10 @@
   color: var(--white-0);
   padding: 8px 16px;
   border-radius: 5px;
-
-  &:hover {
-    background: var(--gray-9);
-    transition: 0.2s;
-  }
+}
+.news-filters__btn:hover {
+  background: var(--gray-9);
+  transition: 0.2s;
 }
 
 .news-filters__search-wrapper {
@@ -170,13 +167,13 @@
   border: 1px solid var(--gray-3);
   padding: 8px 48px 8px 16px;
   border-radius: 5px;
+}
 
-  &::placeholder {
-    color: var(--black-9);
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-  }
+.news-filters__search::placeholder {
+  color: var(--black-9);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
 .news-filters__icon {
