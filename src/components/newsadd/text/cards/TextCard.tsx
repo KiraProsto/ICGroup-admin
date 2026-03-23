@@ -55,6 +55,8 @@ export default function TextCard({
 
     selection.removeAllRanges();
     selection.addRange(newRange);
+
+    saveContent();
   };
 
   const applyFontSize = (size: string) => {
@@ -76,7 +78,65 @@ export default function TextCard({
 
     selection.removeAllRanges();
     selection.addRange(newRange);
+
+    saveContent();
   };
+
+  const findStyledParent = (
+    node: Node,
+    cssProp: string,
+    value: string,
+  ): HTMLElement | null => {
+    let el = node.parentElement;
+
+    while (el) {
+      if (el.style?.getPropertyValue(cssProp) === value) {
+        return el;
+      }
+      el = el.parentElement;
+    }
+
+    return null;
+  };
+
+  const applyInlineStyle = (cssProp: string, value: string) => {
+    const selection = window.getSelection();
+    if (!selection || !selection.rangeCount) return;
+
+    const range = selection.getRangeAt(0);
+
+    const styledParent = findStyledParent(
+      range.commonAncestorContainer,
+      cssProp,
+      value,
+    );
+
+    if (styledParent) {
+      const text = document.createTextNode(styledParent.textContent || '');
+      styledParent.replaceWith(text);
+      saveContent();
+      return;
+    }
+
+    const content = range.extractContents();
+    const span = document.createElement('span');
+    span.style.setProperty(cssProp, value);
+    span.appendChild(content);
+
+    range.insertNode(span);
+
+    selection.removeAllRanges();
+    const newRange = document.createRange();
+    newRange.selectNodeContents(span);
+    selection.addRange(newRange);
+
+    saveContent();
+  };
+
+  const applyBold = () => applyInlineStyle('font-weight', 'bold');
+  const applyItalic = () => applyInlineStyle('font-style', 'italic');
+  const applyUnderline = () => applyInlineStyle('text-decoration', 'underline');
+  const applyStrike = () => applyInlineStyle('text-decoration', 'line-through');
 
   const restoreSelection = () => {
     const sel = window.getSelection();
@@ -86,27 +146,66 @@ export default function TextCard({
     }
   };
 
-  const applyColor = (color: string) => {
+  const applyTextColor = (color: string) => {
     restoreSelection();
-    document.execCommand('styleWithCSS', false, 'true');
-    document.execCommand('foreColor', false, color);
+    applyInlineStyle('color', color);
   };
 
-  const applyBg = (color: string) => {
+  const applyBgColor = (color: string) => {
     restoreSelection();
-    document.execCommand('styleWithCSS', false, 'true');
-    document.execCommand('hiliteColor', false, color);
+    applyInlineStyle('background-color', color);
   };
 
-  const applyBulletList = () => {
+  const toggleList = (type: 'ul' | 'ol') => {
     restoreSelection();
-    document.execCommand('insertUnorderedList');
+
+    const selection = window.getSelection();
+    if (!selection || !selection.rangeCount) return;
+
+    const range = selection.getRangeAt(0);
+
+    let parent = range.commonAncestorContainer.parentElement;
+    while (parent && parent.tagName !== 'UL' && parent.tagName !== 'OL') {
+      parent = parent.parentElement;
+    }
+
+    if (parent && (parent.tagName === 'UL' || parent.tagName === 'OL')) {
+      const fragment = document.createDocumentFragment();
+
+      parent.querySelectorAll('li').forEach((li) => {
+        fragment.append(...Array.from(li.childNodes));
+      });
+
+      parent.replaceWith(fragment);
+      saveContent();
+      return;
+    }
+
+    const content = range.extractContents();
+    const text = content.textContent || '';
+
+    const items = text.split('\n').filter((t) => t.trim() !== '');
+
+    const list = document.createElement(type);
+
+    items.forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      list.appendChild(li);
+    });
+
+    range.insertNode(list);
+
+    selection.removeAllRanges();
+    const newRange = document.createRange();
+    newRange.selectNodeContents(list);
+    selection.addRange(newRange);
+
+    saveContent();
   };
 
-  const applyNumberList = () => {
-    restoreSelection();
-    document.execCommand('insertOrderedList');
-  };
+  const applyBulletList = () => toggleList('ul');
+  const applyNumberList = () => toggleList('ol');
 
   const card = useSelector((state: RootState) =>
     state.cards.list.find((c) => c.id === id),
@@ -115,10 +214,24 @@ export default function TextCard({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (ref.current && card?.content && ref.current.innerHTML === '') {
-      ref.current.innerHTML = card.content;
+    const el = ref.current;
+    if (!el) return;
+
+    if (!card?.content) return;
+
+    const isFocused = document.activeElement === el;
+    const isSameContent = el.innerHTML === card.content;
+
+    if (isFocused || isSameContent) return;
+
+    el.innerHTML = card.content;
+  }, [id, card?.content]);
+
+  const saveContent = () => {
+    if (ref.current) {
+      dispatch(updateCardContent({ id, content: ref.current.innerHTML }));
     }
-  }, []);
+  };
 
   return (
     <div className="card">
@@ -161,28 +274,28 @@ export default function TextCard({
             <button
               type="button"
               aria-label="Жирный текст"
-              onClick={() => document.execCommand('bold')}
+              onClick={() => applyBold()}
             >
               <b>B</b>
             </button>
             <button
               type="button"
               aria-label="Курсив"
-              onClick={() => document.execCommand('italic')}
+              onClick={() => applyItalic()}
             >
               <i>I</i>
             </button>
             <button
               type="button"
               aria-label="Подчеркнутый"
-              onClick={() => document.execCommand('underline')}
+              onClick={() => applyUnderline()}
             >
               <u>U</u>
             </button>
             <button
               type="button"
               aria-label="Зачеркнутый"
-              onClick={() => document.execCommand('strikeThrough')}
+              onClick={() => applyStrike()}
             >
               <s>S</s>
             </button>
@@ -213,7 +326,7 @@ export default function TextCard({
                     className="palette-color"
                     role="menuitem"
                     style={{ backgroundColor: c }}
-                    onClick={() => applyColor(c)}
+                    onClick={() => applyTextColor(c)}
                   />
                 ))}
               </div>
@@ -242,7 +355,7 @@ export default function TextCard({
                     key={c}
                     className="palette-color"
                     style={{ backgroundColor: c }}
-                    onClick={() => applyBg(c)}
+                    onClick={() => applyBgColor(c)}
                   />
                 ))}
               </div>

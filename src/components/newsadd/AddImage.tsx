@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import './newsadd.css';
 
 interface IAddImageFieldProps {
@@ -8,6 +8,18 @@ interface IAddImageFieldProps {
 
 export default function AddImage({ value, onChange }: IAddImageFieldProps) {
   const fileRef = useRef<HTMLInputElement | null>(null);
+  const previewUrl = useMemo(() => {
+    return value ? URL.createObjectURL(value) : null;
+  }, [value]);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
+
   const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -36,12 +48,8 @@ export default function AddImage({ value, onChange }: IAddImageFieldProps) {
         style={{ display: 'none' }}
       />
 
-      {value && (
-        <img
-          src={URL.createObjectURL(value)}
-          alt="preview"
-          className="add__img-preview"
-        />
+      {previewUrl && (
+        <img src={previewUrl} alt="preview" className="add__img-preview" />
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import { AdminLayout } from './pages/admin/AdminLayout';
 import AdminPage from './pages/admin/AdminPage';
@@ -13,6 +13,7 @@ import NewsAddPage from './pages/admin/News/NewsAddPage';
 export default function App() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminPage />} />

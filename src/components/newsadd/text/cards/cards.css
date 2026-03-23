@@ -22,7 +22,7 @@
   padding: 16px;
 
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-world;
 
   &::placeholder {
     font-size: 18px;
