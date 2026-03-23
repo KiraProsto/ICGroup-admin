@@ -1,0 +1,123 @@
+.preview-renderer * {
+  font-family: var(--font-preview) !important;
+}
+
+.preview-overlay {
+  position: fixed;
+  padding: 100px;
+  overflow-y: auto;
+  z-index: 11;
+  inset: 0;
+
+  backdrop-filter: blur(10px);
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.preview-window {
+  position: relative;
+  width: 100%;
+  min-height: fit-content;
+  background: var(--white-0);
+  box-shadow: 0 10px 40px var(--black-1);
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+}
+.preview-window ul,
+.preview-window ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.preview-btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.preview-btn img {
+  width: 25px;
+}
+
+.preview-content {
+  height: 100%;
+  width: 100%;
+}
+
+/* PreviewQuote */
+.preview-quote {
+  color: var(--main-2);
+  padding: 55px 70px;
+  border-top: 1px solid var(--main-2);
+  border-bottom: 1px solid var(--main-2);
+  line-height: 140%;
+  position: relative;
+}
+.preview-quote .quote-img {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 32px;
+  height: auto;
+}
+
+/* PreviewPublication */
+.preview-publication {
+  display: block;
+  border: 1px dashed var(--main-2);
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--black-9);
+}
+
+.preview-publication:hover {
+  transition: 0.3s ease;
+  background: var(--main-2);
+  color: var(--white-0);
+  border: 1px dashed var(--white-0);
+}
+
+/* PreviewImage */
+.preview-image {
+  width: 100%;
+  height: 375px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+.preview-image__wrapper {
+  position: relative;
+  width: 100%;
+}
+.preview-image__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  display: flex;
+  align-items: flex-end;
+}
+
+.preview-image__alt {
+  color: var(--white-0);
+  font-size: 24px;
+}
+
+/* PreviewVideo */
+.preview-video {
+  width: 70%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}

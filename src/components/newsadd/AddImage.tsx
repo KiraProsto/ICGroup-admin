@@ -1,0 +1,56 @@
+import { useEffect, useMemo, useRef } from 'react';
+import './newsadd.css';
+
+interface IAddImageFieldProps {
+  value: File | null;
+  onChange: (file: File) => void;
+}
+
+export default function AddImage({ value, onChange }: IAddImageFieldProps) {
+  const fileRef = useRef<HTMLInputElement | null>(null);
+  const previewUrl = useMemo(() => {
+    return value ? URL.createObjectURL(value) : null;
+  }, [value]);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
+
+  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    onChange(file);
+  };
+
+  return (
+    <div className="add__img">
+      <div className="add__img-controls">
+        <h3 className="add__subtitle">Изображение</h3>
+        <button
+          type="button"
+          className="add__btn"
+          aria-label="Добавить изображение из галереи"
+          onClick={() => fileRef.current?.click()}
+        >
+          <img src="/news/addnews.svg" alt="" aria-hidden="true" />
+        </button>
+      </div>
+
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileRef}
+        onChange={handleSelect}
+        style={{ display: 'none' }}
+      />
+
+      {previewUrl && (
+        <img src={previewUrl} alt="preview" className="add__img-preview" />
+      )}
+    </div>
+  );
+}

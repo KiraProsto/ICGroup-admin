@@ -17,7 +17,15 @@ export default function Sidebar() {
     <aside className="sidebar">
       <nav className="sidebar__nav">
         {menu.map((item) => {
-          const isActive = location.pathname === item.href;
+          let isActive;
+
+          if (item.href === '/admin') {
+            isActive = location.pathname === item.href;
+          } else {
+            isActive =
+              location.pathname === item.href ||
+              location.pathname.startsWith(item.href + '/');
+          }
 
           return (
             <Link

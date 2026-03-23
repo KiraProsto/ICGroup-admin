@@ -4,6 +4,7 @@
   background-color: var(--black-3);
   padding: 53px 22px;
 
+  z-index: 10;
   position: sticky;
   top: 0;
   left: 0;
@@ -22,10 +23,9 @@
   transition: 0.3s ease;
   color: var(--white-0);
   white-space: nowrap;
-
-  &:hover {
-    color: var(--gray-1);
-  }
+}
+.sidebar__link:hover {
+  color: var(--gray-1);
 }
 
 .sidebar__link-active {
